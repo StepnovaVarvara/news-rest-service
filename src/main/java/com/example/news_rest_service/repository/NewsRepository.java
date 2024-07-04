@@ -17,7 +17,7 @@ public interface NewsRepository extends JpaRepository<News, Long>, JpaSpecificat
     List<News> findAll();
 
     @Override
-    @EntityGraph(attributePaths = {"commentList", "user"})
+    @EntityGraph(attributePaths = {"commentList", "user", "category"})
     Optional<News> findById(Long newsId);
 
     Page<News> findAllByCategoryId(Long categoryId, Pageable pageable);

@@ -7,15 +7,13 @@ import com.example.news_rest_service.model.User;
 import com.example.news_rest_service.service.CategoryService;
 import com.example.news_rest_service.service.NewsService;
 import com.example.news_rest_service.service.UserService;
-import com.example.news_rest_service.web.model.filter.NewsFilter;
-import com.example.news_rest_service.web.model.request.UpdateNewsRequest;
-import com.example.news_rest_service.web.model.request.UpsertNewsRequest;
-import com.example.news_rest_service.web.model.response.*;
+import com.example.news_rest_service.web.dto.filter.NewsFilter;
+import com.example.news_rest_service.web.dto.request.UpdateNewsRequest;
+import com.example.news_rest_service.web.dto.request.UpsertNewsRequest;
+import com.example.news_rest_service.web.dto.response.*;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
@@ -32,27 +30,23 @@ public class NewsController {
     private final NewsMapper newsMapper;
 
     @GetMapping("/filter")
-    public ResponseEntity<NewsListResponse> filterByCategory(NewsFilter filter) {
-        return ResponseEntity.ok(
-                newsMapper.newsListToNewsListResponse(newsService.filterByCategory(filter))
-        );
+    public NewsListResponse filterByCategory(NewsFilter filter) {
+        return newsMapper.newsListToNewsListResponse(newsService.filterByCategory(filter));
     }
 
     @GetMapping
-    public ResponseEntity<NewsListResponse> findAll() {
-        return ResponseEntity.ok(
-                newsMapper.newsListToNewsListResponse(newsService.findAll())
-        );
+    public NewsListResponse findAll() {
+        return newsMapper.newsListToNewsListResponse(newsService.findAll());
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<NewsResponse> findById(@PathVariable Long id) {
-        return ResponseEntity.ok(newsMapper.newsToResponse(newsService.findById(id)));
+    public NewsResponse findById(@PathVariable Long id) {
+        return newsMapper.newsToResponse(newsService.findById(id));
     }
 
     @PostMapping
     @Transactional
-    public ResponseEntity<NewsResponse> create(@RequestBody @Valid UpsertNewsRequest request) {
+    public NewsResponse create(@RequestBody @Valid UpsertNewsRequest request) {
         Category existedCategory = categoryService.findById(request.getCategoryId());
         User existedUser = userService.findById(request.getUserId());
 
@@ -62,27 +56,23 @@ public class NewsController {
                 .category(existedCategory)
                 .build();
 
-        return ResponseEntity.status(HttpStatus.CREATED).body(
-                newsMapper.newsToResponse(newsService.save(news, existedCategory, existedUser))
-        );
+        return newsMapper.newsToResponse(newsService.save(news, existedCategory, existedUser));
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<NewsResponse> update(@PathVariable("id") Long newsId, @RequestParam Long userId, @RequestBody @Valid UpdateNewsRequest request) {
+    public NewsResponse update(@PathVariable("id") Long newsId, @RequestParam Long userId, @RequestBody @Valid UpdateNewsRequest request) {
         News news = newsMapper.requestToNews(newsId, request)
                 .setUser(userService.findById(userId))
                 .setCategory(newsService.findById(newsId).getCategory());
 
         News updatedNews = newsService.update(news);
 
-        return ResponseEntity.ok(newsMapper.newsToResponse(updatedNews));
+        return newsMapper.newsToResponse(updatedNews);
     }
 
     @DeleteMapping("/{id}")
     @Transactional
-    public ResponseEntity<Void> delete(@PathVariable Long id, @RequestParam Long userId) {
+    public void delete(@PathVariable Long id, @RequestParam Long userId) {
         newsService.deleteById(id);
-
-        return ResponseEntity.noContent().build();
     }
 }

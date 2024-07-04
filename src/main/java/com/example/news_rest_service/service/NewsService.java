@@ -3,7 +3,7 @@ package com.example.news_rest_service.service;
 import com.example.news_rest_service.model.Category;
 import com.example.news_rest_service.model.News;
 import com.example.news_rest_service.model.User;
-import com.example.news_rest_service.web.model.filter.NewsFilter;
+import com.example.news_rest_service.web.dto.filter.NewsFilter;
 
 import java.util.List;
 

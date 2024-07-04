@@ -1,9 +1,9 @@
 package com.example.news_rest_service.mapper;
 
 import com.example.news_rest_service.model.Category;
-import com.example.news_rest_service.web.model.request.UpsertCategoryRequest;
-import com.example.news_rest_service.web.model.response.CategoryListResponse;
-import com.example.news_rest_service.web.model.response.CategoryResponse;
+import com.example.news_rest_service.web.dto.request.UpsertCategoryRequest;
+import com.example.news_rest_service.web.dto.response.CategoryListResponse;
+import com.example.news_rest_service.web.dto.response.CategoryResponse;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.ReportingPolicy;

@@ -12,7 +12,7 @@ import com.example.news_rest_service.service.CategoryService;
 import com.example.news_rest_service.service.NewsService;
 import com.example.news_rest_service.service.UserService;
 import com.example.news_rest_service.utils.BeanUtils;
-import com.example.news_rest_service.web.model.filter.NewsFilter;
+import com.example.news_rest_service.web.dto.filter.NewsFilter;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;

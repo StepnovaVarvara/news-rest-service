@@ -1,7 +1,7 @@
 package com.example.news_rest_service.repository;
 
 import com.example.news_rest_service.model.News;
-import com.example.news_rest_service.web.model.filter.NewsFilter;
+import com.example.news_rest_service.web.dto.filter.NewsFilter;
 import org.springframework.data.jpa.domain.Specification;
 
 public interface NewsSpecification {

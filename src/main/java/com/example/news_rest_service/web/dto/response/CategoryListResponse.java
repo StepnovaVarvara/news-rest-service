@@ -1,4 +1,4 @@
-package com.example.news_rest_service.web.model.response;
+package com.example.news_rest_service.web.dto.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -10,6 +10,6 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class CommentListResponse {
-    private List<CommentToNewsResponse> commentList = new ArrayList<>();
+public class CategoryListResponse {
+    List<CategoryResponse> categoryList = new ArrayList<>();
 }

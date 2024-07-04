@@ -1,4 +1,4 @@
-package com.example.news_rest_service.web.model.request;
+package com.example.news_rest_service.web.dto.request;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -15,9 +15,11 @@ import lombok.NoArgsConstructor;
 public class UpsertCommentRequest {
     @NotBlank(message = "Текст комментария должен быть заполнен!")
     private String text;
+
     @NotNull(message = "ID новости должно быть указано!")
     @Positive(message = "ID новости должно быть больше 0!")
     private Long newsId;
+
     @NotNull(message = "ID пользователя должно быть указано!")
     @Positive(message = "ID пользователя должно быть больше 0!")
     private Long userId;

@@ -1,4 +1,4 @@
-package com.example.news_rest_service.web.model.response;
+package com.example.news_rest_service.web.dto.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -7,14 +7,14 @@ import lombok.experimental.Accessors;
 
 import java.util.List;
 
-
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 @Accessors(chain = true)
-public class UserResponse {
+public class NewsResponse {
     private Long id;
-    private String userName;
-    private List<NewsResponse> newsList;
+    private String newsName;
     private List<CommentResponse> commentList;
+    private Long userId;
+    private Long categoryId;
 }

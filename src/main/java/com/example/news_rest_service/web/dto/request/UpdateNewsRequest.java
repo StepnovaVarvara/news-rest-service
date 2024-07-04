@@ -1,4 +1,4 @@
-package com.example.news_rest_service.web.model.request;
+package com.example.news_rest_service.web.dto.request;
 
 import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;

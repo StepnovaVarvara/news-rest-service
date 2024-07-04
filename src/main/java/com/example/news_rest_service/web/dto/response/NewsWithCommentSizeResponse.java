@@ -1,4 +1,4 @@
-package com.example.news_rest_service.web.model.response;
+package com.example.news_rest_service.web.dto.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -6,12 +6,11 @@ import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 @Accessors(chain = true)
-public class CommentResponse {
+public class NewsWithCommentSizeResponse {
     private Long id;
-    private String text;
-    private Long userId;
-    private Long newsId;
+    private String newsName;
+    private Long commentSize;
 }

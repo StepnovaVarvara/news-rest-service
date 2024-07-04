@@ -1,4 +1,4 @@
-package com.example.news_rest_service.web.model.filter;
+package com.example.news_rest_service.web.dto.filter;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
